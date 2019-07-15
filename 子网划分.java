@@ -1,7 +1,5 @@
 package net;
 
-import java.util.Arrays;
-
 public class Subnetting {
 	public static void main(String[] args) {
 
@@ -111,7 +109,9 @@ public class Subnetting {
 				ip2[subnetMask + pow - j - 1] = i >> j & 1;
 			}
 			/** 设置第一个ip */
-			Arrays.fill(ip2, subnetMask + pow, 32, 0);// 填充0
+			for (j = subnetMask + pow; j < 32; j++) {// 填充0
+				ip2[j] = 0;
+			}
 			for (j = 0; j < 4; j++) {// 计算每一段IP地址，十进制
 				t = 0;// 计算数组对应的值
 				for (k = 0; k < 8; k++) {
@@ -120,7 +120,9 @@ public class Subnetting {
 				preIp[i][j] = t;// 第一个ip
 			}
 			/** 设置最后一个ip */
-			Arrays.fill(ip2, subnetMask + pow, 32, 1);// 填充1
+			for (j = subnetMask + pow; j < 32; j++) {// 填充1
+				ip2[j] = 1;
+			}
 			for (j = 0; j < 4; j++) {// 计算每一段IP地址，十进制
 				t = 0;// 计算数组对应的值
 				for (k = 0; k < 8; k++) {
