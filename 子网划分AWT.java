@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -154,7 +153,9 @@ public class SubnettingAWT {
 				ip2[subnetMask + pow - j - 1] = i >> j & 1;
 			}
 			/** 设置第一个ip */
-			Arrays.fill(ip2, subnetMask + pow, 32, 0);// 填充0
+			for (j = subnetMask + pow; j < 32; j++) {// 填充0
+				ip2[j] = 0;
+			}
 			for (j = 0; j < 4; j++) {// 计算每一段IP地址，十进制
 				t = 0;// 计算数组对应的值
 				for (k = 0; k < 8; k++) {
@@ -163,7 +164,9 @@ public class SubnettingAWT {
 				preIp[i][j] = t;// 第一个ip
 			}
 			/** 设置最后一个ip */
-			Arrays.fill(ip2, subnetMask + pow, 32, 1);// 填充1
+			for (j = subnetMask + pow; j < 32; j++) {// 填充1
+				ip2[j] = 1;
+			}
 			for (j = 0; j < 4; j++) {// 计算每一段IP地址，十进制
 				t = 0;// 计算数组对应的值
 				for (k = 0; k < 8; k++) {
@@ -176,8 +179,6 @@ public class SubnettingAWT {
 		/**
 		 * 输出
 		 */
-		// 按所需网络数等分划分子网（输入网络号、子网掩码和所需要的网络数，划分子网），
-		// 输出表格形式的子网划分方案和二进制划分方法。
 		System.out.println("根IP地址为：" + temp[0] + " 子网掩码位数为：" + subnetMask);
 		System.out.println("需求子网数量为：" + subnetNumber + " 实际划分的子网数量为：" + realSubnetNumber);
 		System.out.println("每个子网最大的主机数量为：" + maxHost);
