@@ -1,5 +1,11 @@
-# java
-Java语言程序
+# java Java语言程序
+
+该项目是本人大学时期的课程设计，已不再维护
+
+## 项目链接
+[Github](https://github.com/ALI1416/java)
+
+[Gitee](https://gitee.com/ALI1416/java)
 
 ## 许可证
 [![License](https://img.shields.io/badge/license-BSD-brightgreen)](https://opensource.org/licenses/BSD-3-Clause)
